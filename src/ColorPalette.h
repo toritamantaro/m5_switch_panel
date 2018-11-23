@@ -11,7 +11,7 @@ public:
     static const uint16_t kBlack{0x0000}; // 0, 0, 0
     static const uint16_t kWhite{0xFFFF}; // 255, 255, 255
     static const uint16_t kRed{0xF800}; // 255, 0, 0
-    static const uint16_t kGreen{0x07E0}; // 0, 255, 0
+    static const uint16_t kGreen{0x07E0}; // 0, 255, 
     static const uint16_t kBlue{0x001F}; // 0, 0, 255
     static const uint16_t kPink{0xFB3B}; // 255, 100, 220
     static const uint16_t kLightRed{0xFB2C}; // 255, 100, 100
@@ -21,11 +21,13 @@ public:
     static const uint16_t kDarkGray{0x632C}; // 100, 100, 100
 
 private:
-    uint16_t primary_{kPink};
+    // uint16_t primary_{kPink};
     // uint16_t primary_{kGreen};
-    // uint16_t primary_{kBlue};
+    uint16_t primary_{kBlue};
     // uint16_t primary_{kLightBlue};
-    uint16_t secondary_{kLightGrey};
+    // uint16_t secondary_{kLightGrey};
+    // uint16_t secondary_{kRed};
+    uint16_t secondary_{kPink};
     uint16_t foreground_{kWhite};
     uint16_t background_{kBlack};
     uint16_t transparent_{kBlack};

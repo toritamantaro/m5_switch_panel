@@ -15,6 +15,7 @@ const uint8_t buttonA_GPIO = 39;
 const uint8_t buttonB_GPIO = 38;
 const uint8_t buttonC_GPIO = 37;
 
+const uint8_t LedPin = 22; // for LED test
 
 
 void setup() {
@@ -30,6 +31,8 @@ void setup() {
   pinMode(buttonB_GPIO, INPUT);
   pinMode(buttonC_GPIO, INPUT);
 
+  pinMode(LedPin, OUTPUT); // for LED test
+
   // Initialize the M5Stack object
   M5.begin();
 
@@ -42,7 +45,6 @@ void setup() {
 }
 
 void loop() {
-
   // digitalRead return LOW when M5stack button pressed.
   bool A_is_high = !digitalRead(buttonA_GPIO);
   bool B_is_high = !digitalRead(buttonB_GPIO);
@@ -54,6 +56,11 @@ void loop() {
   bool state_C = switch_c.Check(C_is_high);
 
   //Serial.println(state_A);
+  if(state_C){
+    digitalWrite(LedPin,HIGH);
+  }else{
+    digitalWrite(LedPin,LOW);
+  }
 
   delay(10);
 

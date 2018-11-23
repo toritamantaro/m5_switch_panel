@@ -11,20 +11,20 @@ void NotifyListenersViaSubject(void *args){
 
     for(;;){
         sp->NotifyListeners();
-        delay(10);
+        delay(15);
         // delay(1000);
     }
 }
 
 void CyclicVariation(void *args){
-    uint16_t partition = 150;
+    uint16_t partition = 100;
     int16_t c = 0;
     SwitchPanel *sp = reinterpret_cast<SwitchPanel *>(args);
     for(;;){
         c = (c + 1) % partition;
         float_t f = sin(c * 2 * PI / (float_t)partition);
         sp->set_variation_value(f);
-        delay(15);
+        delay(25);
     }
 }
 
@@ -37,7 +37,7 @@ void SwitchPanel::init(){
         "NotifyListenersViaSubject",   /* Name of the task */
         DEFAULT_STACK_SIZE,         /* Stack size */
         this,          /* Task input parameter */
-        2,            /* Priority of the task */
+        1,            /* Priority of the task */
         NULL);        /* Task handle. */
 
     
