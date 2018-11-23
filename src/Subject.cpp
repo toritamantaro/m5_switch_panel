@@ -2,25 +2,27 @@
 
 namespace m5_mytool {
 
-void Subject::add_listener(std::shared_ptr<Listener> lsn){
+// void Subject::add_listener(std::shared_ptr<Listener> l){
+void Subject::add_listener(Listener& l){
 
     /* check if there is a matching element */
-    auto it = listeners_.begin();
-    while(it != listeners_.end()){
-        if(it->lock() == lsn){
+    auto it = lbs_.begin();
+    while(it != lbs_.end()){
+        if(it->lock() == l.handler()){
             break;   
         }
         ++it;
     }
-    if(it == listeners_.end()){
-        listeners_.push_back(lsn);
+    if(it == lbs_.end()){
+        lbs_.push_back(l.handler());
     }
 }
 
-void Subject::detete_listener(std::shared_ptr<Listener> lsn){
-    for(auto it = listeners_.begin(); it != listeners_.end(); it++){
-        if(it->lock() == lsn){
-            listeners_.erase(it);
+// void Subject::detete_listener(std::shared_ptr<Listener> l){
+void Subject::detete_listener(Listener& l){
+    for(auto it = lbs_.begin(); it != lbs_.end(); it++){
+        if(it->lock() == l.handler()){
+            lbs_.erase(it);
             break;
         }
     }
@@ -30,16 +32,16 @@ void Subject::notify(){
 
     sweep(); /* sweep unreferenced pointer, before calling handler. */
 
-    //Serial.print(listeners_.size());
-    for(auto& w: listeners_){
+    //Serial.print(lbs_.size());
+    for(auto& w: lbs_){
         w.lock()->update(this);
     }
 }
 
 void Subject::sweep(){
-    for(auto it = listeners_.begin(); it != listeners_.end();){
+    for(auto it = lbs_.begin(); it != lbs_.end();){
         if(it->expired()){
-            it=listeners_.erase(it);
+            it=lbs_.erase(it);
         }else{
             ++it;
         }

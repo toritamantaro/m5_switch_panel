@@ -2,7 +2,7 @@
 
 namespace m5_mytool {
 
-void ToggleButton::update(Subject* from){
+void ToggleButtonBase::update(Subject* from){
 
     // Serial.println(" I am Button:");
 
@@ -36,7 +36,7 @@ void ToggleButton::update(Subject* from){
 
 }
 
-void ToggleButtonMark::update(Subject* from){
+void ToggleButtonMarkBase::update(Subject* from){
 
     TogglePainter* subject = static_cast<TogglePainter*>(from);
     bool is_on = subject->toggle_is_on();
@@ -77,11 +77,11 @@ void ToggleButtonMark::update(Subject* from){
 
 }
 
-void ToggleSlider::update(Subject* from){
+void ToggleSliderBase::update(Subject* from){
     TogglePainter* subject = static_cast<TogglePainter*>(from);
 
     bool is_on = subject->toggle_is_on();
-    float_t color_ratio=subject->color_ratio(); /* 0.0 to 1.0 */
+    // float_t color_ratio=subject->color_ratio(); /* 0.0 to 1.0 */
     float_t position_ratio=subject->position_ratio(); /* 0.0 to 1.0 */
     ColorPalette* palette = subject->palette_pt();
     BoundingRect* rect = subject->rect_pt();

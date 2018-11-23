@@ -1,22 +1,23 @@
 #include <Arduino.h>
 #include "ToggleSwitch.h"
 
+//#include <memory>
+
 namespace m5_mytool {
 
-ToggleSwitch::ToggleSwitch(int16_t top, int16_t left, int16_t width, int16_t height) : 
-    slider_{std::make_shared<ToggleSlider>()},
-    button_{std::make_shared<ToggleButton>()},
-    mark_{std::make_shared<ToggleButtonMark>()},
+ToggleSwitchBase::ToggleSwitchBase(int16_t top, int16_t left, int16_t width, int16_t height) : 
+    // slider_{std::make_shared<ToggleSlider>()},
+    // button_{std::make_shared<ToggleButton>()},
+    // mark_{std::make_shared<ToggleButtonMark>()},
     painter_{PainterMaker(top,left,width,height)}
 {
-
     painter_->add_listener(slider_);
     painter_->add_listener(button_);
     painter_->add_listener(mark_);
 
 }
 
-std::unique_ptr<TogglePainter> ToggleSwitch::PainterMaker(int16_t top, int16_t left, int16_t width, int16_t height){
+std::unique_ptr<TogglePainter> ToggleSwitchBase::PainterMaker(int16_t top, int16_t left, int16_t width, int16_t height){
 
     height = _max(kSizeMin, height); /* height : more than kSizeMin */
     width = _max(height * 2, width); /* width : more than twice the height */
@@ -24,7 +25,7 @@ std::unique_ptr<TogglePainter> ToggleSwitch::PainterMaker(int16_t top, int16_t l
     return std::unique_ptr<TogglePainter>(new TogglePainter(top, left, width, height));
 }
 
-void ToggleSwitch::update(Subject* from){
+void ToggleSwitchBase::update(Subject* from){
 
     color_ratio_ = (static_cast<SwitchPanel*>(from)->variation_value() + 1.0)/2.0;
 
@@ -41,16 +42,16 @@ void ToggleSwitch::update(Subject* from){
 
 }
 
-bool ToggleSwitch::State()const{
+bool ToggleSwitchBase::State()const{
     return state_ == BUTTON::kToggleOn && position_counter_ == kPositionCounterMax;
 }
 
-bool ToggleSwitch::Check(bool is_high){
+bool ToggleSwitchBase::Check(bool is_high){
     state_=state_context_.Check(is_high);
     return State();
 }
 
-void ToggleSwitch::ProceedNextPosition(){
+void ToggleSwitchBase::ProceedNextPosition(){
     //Serial.println(position_counter_);
 
     /* update : position_counter_ */
@@ -70,6 +71,26 @@ void ToggleSwitch::ProceedNextPosition(){
     position_ratio_ = (cos(position_counter_ * PI / range) + 1.0)/2.0; /* 0.0 to 1.0 */
 
 }
+
+
+bool ToggleSwitch::State()const{
+    // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(handler());
+    std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(handler());
+    return h.lock()->State();
+}
+
+bool ToggleSwitch::Check(bool is_high){
+    // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(handler());
+    std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(handler());
+    return h.lock()->Check(is_high);
+}
+
+void ToggleSwitch::SetColorPalette(ColorPalette palette){
+    // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(handler());
+    std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(handler());
+    h.lock()->SetColorPalette(palette);  
+}
+
 
 
 } // namespace

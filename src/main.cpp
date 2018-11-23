@@ -4,14 +4,16 @@
 m5_mytool::SwitchPanel sp;
 
 #include "ToggleSwitch.h"
-std::shared_ptr<m5_mytool::ToggleSwitch> switch_a =
-  std::make_shared<m5_mytool::ToggleSwitch>(10,20,200,10);
-std::shared_ptr<m5_mytool::ToggleSwitch> switch_b =
-  std::make_shared<m5_mytool::ToggleSwitch>(10,65,150,30);
+// std::shared_ptr<m5_mytool::ToggleSwitch> switch_a =
+//   std::make_shared<m5_mytool::ToggleSwitch>(10,20,200,10);
+// std::shared_ptr<m5_mytool::ToggleSwitch> switch_b =
+//   std::make_shared<m5_mytool::ToggleSwitch>(10,65,150,30);
+// std::shared_ptr<m5_mytool::ToggleSwitch> switch_c =
+//   std::make_shared<m5_mytool::ToggleSwitch>(10,130,200,90);
+m5_mytool::ToggleSwitch switch_a(10,20,200,10);
+m5_mytool::ToggleSwitch switch_b(10,65,150,30);
+m5_mytool::ToggleSwitch switch_c(10,130,200,90);
 
-// std::shared_ptr<m5_mytool::ToggleSwitch> switch_c;
-std::shared_ptr<m5_mytool::ToggleSwitch> switch_c =
-  std::make_shared<m5_mytool::ToggleSwitch>(10,130,200,90);
 
 #include "ColorPalette.h"
 
@@ -53,9 +55,12 @@ void loop() {
   bool C_is_high = !digitalRead(buttonC_GPIO);
 
   // TggleSwitch return the button state.
-  bool state_A = switch_a->Check(A_is_high);
-  bool state_B = switch_b->Check(B_is_high);
-  bool state_C = switch_c->Check(C_is_high);
+  // bool state_A = switch_a->Check(A_is_high);
+  // bool state_B = switch_b->Check(B_is_high);
+  // bool state_C = switch_c->Check(C_is_high);
+  bool state_A = switch_a.Check(A_is_high);
+  bool state_B = switch_b.Check(B_is_high);
+  bool state_C = switch_c.Check(C_is_high);
 
   //Serial.println(state_A);
 
