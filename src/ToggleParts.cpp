@@ -3,9 +3,7 @@
 namespace m5_mytool {
 
 void ToggleButtonBase::update(Subject* from){
-
-    // Serial.println(" I am Button:");
-
+    
     TogglePainter* subject = static_cast<TogglePainter*>(from);
     bool is_on = subject->toggle_is_on();
     float_t color_ratio=subject->color_ratio(); /* 0.0 to 1.0 */
