@@ -6,9 +6,6 @@
 namespace m5_mytool {
 
 ToggleSwitchBase::ToggleSwitchBase(int16_t top, int16_t left, int16_t width, int16_t height) : 
-    // slider_{std::make_shared<ToggleSlider>()},
-    // button_{std::make_shared<ToggleButton>()},
-    // mark_{std::make_shared<ToggleButtonMark>()},
     painter_{PainterMaker(top,left,width,height)}
 {
     painter_->add_listener(slider_);
@@ -72,7 +69,6 @@ void ToggleSwitchBase::ProceedNextPosition(){
 
 }
 
-
 bool ToggleSwitch::State()const{
     // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(handler());
     std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(handler());
@@ -90,7 +86,6 @@ void ToggleSwitch::SetColorPalette(ColorPalette palette){
     std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(handler());
     h.lock()->SetColorPalette(palette);  
 }
-
 
 
 } // namespace

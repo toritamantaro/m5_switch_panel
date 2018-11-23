@@ -2,7 +2,6 @@
 
 namespace m5_mytool {
 
-// void Subject::add_listener(std::shared_ptr<Listener> l){
 void Subject::add_listener(Listener& l){
 
     /* check if there is a matching element */
@@ -18,7 +17,6 @@ void Subject::add_listener(Listener& l){
     }
 }
 
-// void Subject::detete_listener(std::shared_ptr<Listener> l){
 void Subject::detete_listener(Listener& l){
     for(auto it = lbs_.begin(); it != lbs_.end(); it++){
         if(it->lock() == l.handler()){

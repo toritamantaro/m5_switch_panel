@@ -29,7 +29,6 @@ protected:
 
 public:
     virtual ~Listener() = default;
-    // virtual void update(Subject* sub) = 0;
 };
 
 } // namespace
