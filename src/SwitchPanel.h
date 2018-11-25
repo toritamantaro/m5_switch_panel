@@ -19,9 +19,9 @@ public:
     SwitchPanel() = default;
     ~SwitchPanel() = default;
 
-    void init(void);
+    void Init(void);
 
-    void NotifyListeners(){notify();}
+    void NotifyListeners(){Notify();}
 
     float_t variation_value()const{return variation_value_;}
     void set_variation_value(float_t f){variation_value_=f;}

@@ -1,15 +1,17 @@
 #include <Arduino.h>
 
+/* Subject */
 #include "SwitchPanel.h"
 m5_mytool::SwitchPanel sp;
 
+/* Listener */
 #include "ToggleSwitch.h"
-m5_mytool::ToggleSwitch switch_a(10,20,200,10);
-m5_mytool::ToggleSwitch switch_b(10,65,150,30);
-m5_mytool::ToggleSwitch switch_c(10,130,200,90);
+m5_mytool::ToggleSwitch switch_a(10,20,200,10); // x, y, width, height
+m5_mytool::ToggleSwitch switch_b(10,65,150,30); // x, y, width, height
+m5_mytool::ToggleSwitch switch_c(10,130,200,90); // x, y, width, height
 
-
-#include "ColorPalette.h"
+/* ColorPalette */
+// #include "ColorPalette.h"
 
 const uint8_t buttonA_GPIO = 39;
 const uint8_t buttonB_GPIO = 38;
@@ -19,11 +21,8 @@ const uint8_t LedPin = 22; // for LED test
 
 
 void setup() {
-
-  // m5_mytool::ColorPalette plt;
-  // plt.set_background(m5_mytool::ColorPalette::kGreen);
-  // switch_c->SetColorPalette(plt);
-
+  // Initialize the M5Stack object
+  M5.begin();
 
   Serial.begin(115200);
 
@@ -33,29 +32,29 @@ void setup() {
 
   pinMode(LedPin, OUTPUT); // for LED test
 
-  // Initialize the M5Stack object
-  M5.begin();
+  // m5_mytool::ColorPalette plt;
+  // plt.set_background(m5_mytool::ColorPalette::kGreen);
+  // switch_c.SetColorPalette(plt);
 
-  sp.add_listener(switch_a);
-  sp.add_listener(switch_b);
-  sp.add_listener(switch_c);
+  sp.Add(switch_a);
+  sp.Add(switch_b);
+  sp.Add(switch_c);
 
-  sp.init();
+  sp.Init();
 
 }
 
 void loop() {
-  // digitalRead return LOW when M5stack button pressed.
+  // digitalRead returns LOW when M5stack button pressed.
   bool A_is_high = !digitalRead(buttonA_GPIO);
   bool B_is_high = !digitalRead(buttonB_GPIO);
   bool C_is_high = !digitalRead(buttonC_GPIO);
 
-  // TggleSwitch return the button state.
+  // TggleSwitch returns the button state.
   bool state_A = switch_a.Check(A_is_high);
   bool state_B = switch_b.Check(B_is_high);
   bool state_C = switch_c.Check(C_is_high);
 
-  //Serial.println(state_A);
   if(state_C){
     digitalWrite(LedPin,HIGH);
   }else{

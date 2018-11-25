@@ -11,21 +11,27 @@ namespace m5_mytool {
 class Subject{
 private:
 
-std::vector<std::weak_ptr<ListenerBase>> lbs_;
+std::vector<std::weak_ptr<ListenerBody>> bodies_;
 
 public:
     /* register the Listener */
-    void add_listener(Listener& l);
+    void Add(Listener& listener);
+
     /* deregister the Listener */
-    void detete_listener(Listener& l);
+    void Detete(Listener& listener);
+
     /* sweep unreferenced Listeners */
-    void sweep();
+    void Sweep();
 
 protected:
     /* call Listeners handler */
-    void notify();
+    void Notify();
 
 };
+
+
+
+
 
 } // namespace
 #endif // SUBJECT_H_

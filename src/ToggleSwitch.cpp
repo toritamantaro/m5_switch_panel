@@ -8,9 +8,9 @@ namespace m5_mytool {
 ToggleSwitchBase::ToggleSwitchBase(int16_t top, int16_t left, int16_t width, int16_t height) : 
     painter_{PainterMaker(top,left,width,height)}
 {
-    painter_->add_listener(slider_);
-    painter_->add_listener(button_);
-    painter_->add_listener(mark_);
+    painter_->Add(slider_);
+    painter_->Add(button_);
+    painter_->Add(mark_);
 
 }
 
@@ -22,7 +22,7 @@ std::unique_ptr<TogglePainter> ToggleSwitchBase::PainterMaker(int16_t top, int16
     return std::unique_ptr<TogglePainter>(new TogglePainter(top, left, width, height));
 }
 
-void ToggleSwitchBase::update(Subject* from){
+void ToggleSwitchBase::Update(Subject* from){
 
     color_ratio_ = (static_cast<SwitchPanel*>(from)->variation_value() + 1.0)/2.0;
 
@@ -70,20 +70,20 @@ void ToggleSwitchBase::ProceedNextPosition(){
 }
 
 bool ToggleSwitch::State()const{
-    // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(handler());
-    std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(handler());
+    // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(body());
+    std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(body());
     return h.lock()->State();
 }
 
 bool ToggleSwitch::Check(bool is_high){
-    // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(handler());
-    std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(handler());
+    // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(body());
+    std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(body());
     return h.lock()->Check(is_high);
 }
 
 void ToggleSwitch::SetColorPalette(ColorPalette palette){
-    // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(handler());
-    std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(handler());
+    // std::shared_ptr<ToggleSwitchBase> h = std::dynamic_pointer_cast<ToggleSwitchBase>(body());
+    std::weak_ptr<ToggleSwitchBase> h = std::static_pointer_cast <ToggleSwitchBase>(body());
     h.lock()->SetColorPalette(palette);  
 }
 

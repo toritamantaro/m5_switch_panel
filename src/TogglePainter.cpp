@@ -16,7 +16,7 @@ TogglePainter::TogglePainter(int16_t top, int16_t left, int16_t width, int16_t h
     palette_=palette;
 }
 
-void TogglePainter::CreateSprite(){
+void TogglePainter::InitSprite(){
     sprite_->setColorDepth(8);
     sprite_->setBitmapColor(palette_.primary(), palette_.background());
     sprite_->createSprite(rect_.width(), rect_.height());
@@ -26,10 +26,10 @@ void TogglePainter::CreateSprite(){
 void TogglePainter::DrawLisners(){
 
     /* create sprite before draw */
-    CreateSprite();
+    InitSprite();
 
     /* call Listeners handler */
-    notify();
+    Notify();
 
     /* push the sprite */
     sprite_->pushSprite(rect_.left(), rect_.top());

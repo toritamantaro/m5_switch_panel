@@ -10,7 +10,7 @@
 
 namespace m5_mytool {
 
-class ToggleSwitchBase : public ListenerBase{
+class ToggleSwitchBase : public ListenerBody{
     static const int8_t kSizeMin{10};
     static const int8_t kPositionCounterMax{100};
     static const int8_t kPositionCounterMin{0};
@@ -42,7 +42,7 @@ public:
     void SetColorPalette(ColorPalette p){painter_->set_palette(p);}
 
 protected:
-    void update(Subject* from) override;
+    void Update(Subject* from) override;
 
 };
 
@@ -50,7 +50,7 @@ class ToggleSwitch : public Listener{
 public:
     ToggleSwitch() = delete;
     ToggleSwitch(int16_t top, int16_t left, int16_t width, int16_t height){
-        set_handler(std::make_shared<ToggleSwitchBase>(top, left, width, height));}
+        set_body(std::make_shared<ToggleSwitchBase>(top, left, width, height));}
     bool Check(bool is_high);
     bool State()const;
     void SetColorPalette(ColorPalette p);

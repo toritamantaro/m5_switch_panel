@@ -2,7 +2,7 @@
 
 namespace m5_mytool {
 
-void ToggleButtonBase::update(Subject* from){
+void ToggleButtonBase::Update(Subject* from){
     
     TogglePainter* subject = static_cast<TogglePainter*>(from);
     bool is_on = subject->toggle_is_on();
@@ -34,7 +34,7 @@ void ToggleButtonBase::update(Subject* from){
 
 }
 
-void ToggleButtonMarkBase::update(Subject* from){
+void ToggleButtonMarkBase::Update(Subject* from){
 
     TogglePainter* subject = static_cast<TogglePainter*>(from);
     bool is_on = subject->toggle_is_on();
@@ -75,7 +75,7 @@ void ToggleButtonMarkBase::update(Subject* from){
 
 }
 
-void ToggleSliderBase::update(Subject* from){
+void ToggleSliderBase::Update(Subject* from){
     TogglePainter* subject = static_cast<TogglePainter*>(from);
 
     bool is_on = subject->toggle_is_on();

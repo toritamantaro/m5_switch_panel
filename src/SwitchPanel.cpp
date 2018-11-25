@@ -30,7 +30,7 @@ void CyclicVariation(void *args){
 
 /* ---------------------------------------------------------------------- */
 
-void SwitchPanel::init(){
+void SwitchPanel::Init(){
 
     xTaskCreate(
         NotifyListenersViaSubject,     /* Function to implement the task */

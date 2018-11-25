@@ -8,24 +8,27 @@ namespace m5_mytool {
 #include <vector>
 
 class Subject;
+// class SwitchSubject;
+// class PartsSubject;
 
-class ListenerBase {
+
+class ListenerBody {
     friend class Subject;
 public:
-    virtual ~ListenerBase() = default;
+    virtual ~ListenerBody() = default;
 protected:
-    virtual void update(Subject* sub) = 0; /* handler */
+    virtual void Update(Subject* sub) = 0; /* handler */
 
 };
 
 class Listener{
     friend class Subject;
 private:
-    std::shared_ptr<ListenerBase> handler_;
+    std::shared_ptr<ListenerBody> body_;
 protected:
 
-    void set_handler(std::shared_ptr<ListenerBase> handler){handler_ = handler;}
-    std::shared_ptr<ListenerBase> handler() const{return handler_;}
+    void set_body(std::shared_ptr<ListenerBody> body){body_ = body;}
+    std::shared_ptr<ListenerBody> body() const{return body_;}
 
 public:
     virtual ~Listener() = default;

@@ -9,35 +9,35 @@ namespace m5_mytool {
  * ToggleParts is Listner for TogglePainter(Subject)
 **/
 
-class ToggleButtonBase : public ListenerBase{
+class ToggleButtonBase : public ListenerBody{
 protected:
-    void update(Subject* from) override;
+    void Update(Subject* from) override;
 };
 class ToggleButton : public Listener{
 public:
-    ToggleButton(){set_handler(std::make_shared<ToggleButtonBase>());}
+    ToggleButton(){set_body(std::make_shared<ToggleButtonBase>());}
 };
 
-class ToggleButtonMarkBase : public ListenerBase{
+class ToggleButtonMarkBase : public ListenerBody{
 protected:
-    void update(Subject* from) override;
+    void Update(Subject* from) override;
 };
 
 class ToggleButtonMark : public Listener{
 public:
-    ToggleButtonMark(){set_handler(std::make_shared<ToggleButtonMarkBase>());}
+    ToggleButtonMark(){set_body(std::make_shared<ToggleButtonMarkBase>());}
 };
 
 
-class ToggleSliderBase : public ListenerBase{
+class ToggleSliderBase : public ListenerBody{
 protected:
-    void update(Subject* from) override;
+    void Update(Subject* from) override;
 
 };
 
 class ToggleSlider : public Listener{
 public:
-    ToggleSlider(){set_handler(std::make_shared<ToggleSliderBase>());}
+    ToggleSlider(){set_body(std::make_shared<ToggleSliderBase>());}
 
 };
 

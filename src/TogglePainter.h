@@ -26,7 +26,7 @@ public:
     TogglePainter(int16_t top, int16_t left, int16_t width, int16_t height);
     TogglePainter(int16_t top, int16_t left, int16_t width, int16_t height, ColorPalette palette);
 
-    void CreateSprite();
+    void InitSprite();
     void DrawLisners();
 
     float_t color_ratio()const{return color_ratio_;}

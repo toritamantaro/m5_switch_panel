@@ -2,44 +2,44 @@
 
 namespace m5_mytool {
 
-void Subject::add_listener(Listener& l){
+void Subject::Add(Listener& listener){
 
     /* check if there is a matching element */
-    auto it = lbs_.begin();
-    while(it != lbs_.end()){
-        if(it->lock() == l.handler()){
+    auto it = bodies_.begin();
+    while(it != bodies_.end()){
+        if(it->lock() == listener.body()){
             break;   
         }
         ++it;
     }
-    if(it == lbs_.end()){
-        lbs_.push_back(l.handler());
+    if(it == bodies_.end()){
+        bodies_.push_back(listener.body());
     }
 }
 
-void Subject::detete_listener(Listener& l){
-    for(auto it = lbs_.begin(); it != lbs_.end(); it++){
-        if(it->lock() == l.handler()){
-            lbs_.erase(it);
+void Subject::Detete(Listener& listener){
+    for(auto it = bodies_.begin(); it != bodies_.end(); it++){
+        if(it->lock() == listener.body()){
+            bodies_.erase(it);
             break;
         }
     }
 }
 
-void Subject::notify(){
+void Subject::Notify(){
 
-    sweep(); /* sweep unreferenced pointer, before calling handler. */
+    Sweep(); /* sweep unreferenced pointer, before calling handler. */
 
-    //Serial.print(lbs_.size());
-    for(auto& w: lbs_){
-        w.lock()->update(this);
+    //Serial.print(bodies_.size());
+    for(auto& w: bodies_){
+        w.lock()->Update(this);
     }
 }
 
-void Subject::sweep(){
-    for(auto it = lbs_.begin(); it != lbs_.end();){
+void Subject::Sweep(){
+    for(auto it = bodies_.begin(); it != bodies_.end();){
         if(it->expired()){
-            it=lbs_.erase(it);
+            it=bodies_.erase(it);
         }else{
             ++it;
         }
