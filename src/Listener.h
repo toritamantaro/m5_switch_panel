@@ -8,9 +8,6 @@ namespace m5_mytool {
 #include <vector>
 
 class Subject;
-// class SwitchSubject;
-// class PartsSubject;
-
 
 class ListenerBody {
     friend class Subject;

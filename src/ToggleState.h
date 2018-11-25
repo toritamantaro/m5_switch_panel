@@ -21,7 +21,7 @@ class ButtonStateContext{
     ButtonStateContext();
     ~ButtonStateContext() = default;
 
-    BUTTON Check(bool is_high); /* Transit the state by giving a signal */
+    BUTTON Check(bool is_high); /* make the state transition by giving a signal */
 
     /* Getter-Setter */
     void set_state(ButtonState *next) { state_ = next; }

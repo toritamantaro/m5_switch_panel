@@ -7,7 +7,7 @@ ButtonStateContext::ButtonStateContext() :
 
 /**
  *  BUTTON Check(bool is_high)
- *  transit the state by giving a signal
+ *  make the state transition by giving a signal
 **/
 BUTTON ButtonStateContext::Check(bool is_high){
     state_->Read(is_high, this);
@@ -39,25 +39,25 @@ ButtonState *ButtonStateContext::ToggleFalling() const{
 
 void ToggleOffState::Read(bool is_high, ButtonStateContext *ctx){
     if (is_high){
-        ctx->set_state(ctx->ToggleRising()); /* transit the state */
+        ctx->set_state(ctx->ToggleRising()); /* state transition */
     }
 }
 
 void ToggleRisingState::Read(bool is_high, ButtonStateContext *ctx){
     if (!is_high){
-        ctx->set_state(ctx->ToggleOn()); /* transit the state */ 
+        ctx->set_state(ctx->ToggleOn()); /* state transition */ 
     }
 }
 
 void ToggleOnState::Read(bool is_high, ButtonStateContext *ctx){
     if (is_high){
-        ctx->set_state(ctx->ToggleFalling()); /* transit the state */
+        ctx->set_state(ctx->ToggleFalling()); /* state transition */
     }
 }
 
 void ToggleFallingState::Read(bool is_high, ButtonStateContext *ctx){
     if (!is_high){
-        ctx->set_state(ctx->ToggleOff()); /* transit the state */ 
+        ctx->set_state(ctx->ToggleOff()); /* state transition */ 
     }
 }
 
