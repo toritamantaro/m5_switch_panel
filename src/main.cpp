@@ -4,7 +4,7 @@
 #include "SwitchPanel.h"
 m5_mytool::SwitchPanel sp;
 
-/* Listener */
+/* Listener(Observer) */
 #include "ToggleSwitch.h"
 m5_mytool::ToggleSwitch switch_a(10,20,200,10); // x, y, width, height
 m5_mytool::ToggleSwitch switch_b(10,65,150,30); // x, y, width, height
