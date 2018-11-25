@@ -32,7 +32,7 @@ void loop()
     // e.g. bool is_high = digitalRead(PIN_NUM)
 
     // make the state transition by giving a signal
-    bool tsw_state = tsw.Check(bool is_high);
+    bool tsw_state = tsw.Check(is_high);
 
     delay(10);
 }
