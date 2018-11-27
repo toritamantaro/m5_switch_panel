@@ -30,7 +30,7 @@ void Subject::Notify(){
 
     Sweep(); /* sweep unreferenced pointer, before calling handler. */
 
-    //Serial.print(bodies_.size());
+    // Serial.print(bodies_.size());
     for(auto& w: bodies_){
         w.lock()->Update(this);
     }

@@ -45,6 +45,5 @@ public:
     TFT_eSprite* sprite_pt(){return sprite_.get();}
 };
 
-
 } // namespace
 #endif // TOGGLEPAINTER_H_

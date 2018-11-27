@@ -1,4 +1,3 @@
-
 #ifndef SWITCHPANEL_H_
 #define SWITCHPANEL_H_
 
@@ -27,7 +26,6 @@ public:
     void set_variation_value(float_t f){variation_value_=f;}
 
 };
-
 
 } // namespace
 #endif // SWITCHPANEL_H_

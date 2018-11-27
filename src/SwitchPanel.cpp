@@ -1,7 +1,5 @@
 #include "SwitchPanel.h"
 
-#include "ToggleSwitch.h"
-
 namespace m5_mytool{
 
 const uint32_t DEFAULT_STACK_SIZE = 4096;

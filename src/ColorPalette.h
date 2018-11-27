@@ -35,6 +35,8 @@ private:
 public:
     ColorPalette() = default;
     ~ColorPalette() = default;
+    ColorPalette(const ColorPalette &other) = default;
+    ColorPalette &operator=(const ColorPalette &other) = default;
 
     static uint16_t RGB2Color(uint8_t red, uint8_t green, uint8_t blue);
     static void Color2RGB(uint16_t color, uint8_t rgb[]);

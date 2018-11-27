@@ -107,5 +107,4 @@ void ToggleSliderBase::Update(Subject* from){
 
 }
 
-
 } // namespace

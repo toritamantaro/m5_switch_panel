@@ -17,6 +17,8 @@ public:
     BoundingRect(uint16_t left, uint16_t top);
     BoundingRect(uint16_t left, uint16_t top, uint16_t width, uint16_t height);
     ~BoundingRect() = default;
+    BoundingRect(const BoundingRect &other) = default;
+    BoundingRect &operator=(const BoundingRect &other) = default;
 
     uint16_t Right();
     uint16_t Bottom();

@@ -41,6 +41,5 @@ public:
 
 };
 
-
 } // namespace
 #endif // TOGGLEPARTS_H_

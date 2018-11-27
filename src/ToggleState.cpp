@@ -61,5 +61,4 @@ void ToggleFallingState::Read(bool is_high, ButtonStateContext *ctx){
     }
 }
 
-
 } // namespace

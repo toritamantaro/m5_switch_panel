@@ -17,8 +17,7 @@ const uint8_t buttonA_GPIO = 39;
 const uint8_t buttonB_GPIO = 38;
 const uint8_t buttonC_GPIO = 37;
 
-const uint8_t LedPin = 22; // for LED test
-
+const uint8_t LedPin = 22; // LED test
 
 void setup() {
   // Initialize the M5Stack object
@@ -30,7 +29,7 @@ void setup() {
   pinMode(buttonB_GPIO, INPUT);
   pinMode(buttonC_GPIO, INPUT);
 
-  pinMode(LedPin, OUTPUT); // for LED test
+  pinMode(LedPin, OUTPUT); // LED test
 
   // m5_mytool::ColorPalette plt;
   // plt.set_background(m5_mytool::ColorPalette::kGreen);
@@ -55,14 +54,12 @@ void loop() {
   bool state_B = switch_b.Check(B_is_high);
   bool state_C = switch_c.Check(C_is_high);
 
-  if(state_C){
+  if(state_C){ // LED test
     digitalWrite(LedPin,HIGH);
   }else{
     digitalWrite(LedPin,LOW);
   }
 
   delay(10);
-
-
 
 }

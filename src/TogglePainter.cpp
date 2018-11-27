@@ -1,4 +1,3 @@
-
 #include "TogglePainter.h"
 
 namespace m5_mytool {
@@ -40,7 +39,6 @@ void TogglePainter::DrawLisners(){
     sprite_->deleteSprite();
 
 }
-
 
 } // namespace
 

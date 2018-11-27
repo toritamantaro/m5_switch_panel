@@ -88,5 +88,4 @@ class ToggleFallingState : public ButtonState{
 };
 
 } // namespace
-
 #endif // TOGGLESTATE_H_

@@ -56,6 +56,5 @@ public:
     void SetColorPalette(ColorPalette p);
 };
 
-
 } // namaspace
 #endif // TOGGLESWITCH_H_

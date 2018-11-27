@@ -10,8 +10,7 @@ namespace m5_mytool {
 
 class Subject{
 private:
-
-std::vector<std::weak_ptr<ListenerBody>> bodies_;
+    std::vector<std::weak_ptr<ListenerBody>> bodies_;
 
 public:
     /* register the Listener */

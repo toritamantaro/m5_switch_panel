@@ -1,7 +1,6 @@
-#include <Arduino.h>
 #include "ToggleSwitch.h"
 
-//#include <memory>
+#include <Arduino.h>
 
 namespace m5_mytool {
 
@@ -11,7 +10,6 @@ ToggleSwitchBase::ToggleSwitchBase(int16_t top, int16_t left, int16_t width, int
     painter_->Add(slider_);
     painter_->Add(button_);
     painter_->Add(mark_);
-
 }
 
 std::unique_ptr<TogglePainter> ToggleSwitchBase::PainterMaker(int16_t top, int16_t left, int16_t width, int16_t height){
