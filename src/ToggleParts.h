@@ -3,43 +3,47 @@
 
 #include "TogglePainter.h"
 
-namespace m5_mytool {
+namespace m5_mytool
+{
 
 /**
  * ToggleParts is Listner for TogglePainter(Subject)
 **/
 
-class ToggleButtonBase : public ListenerBody{
-protected:
-    void Update(Subject* from) override;
+class ToggleButtonBody : public ListenerBody
+{
+  protected:
+    void Update(Subject *from) override;
 };
-class ToggleButton : public Listener{
-public:
-    ToggleButton(){set_body(std::make_shared<ToggleButtonBase>());}
-};
-
-class ToggleButtonMarkBase : public ListenerBody{
-protected:
-    void Update(Subject* from) override;
+class ToggleButton : public Listener
+{
+  public:
+    ToggleButton() { set_body(std::make_shared<ToggleButtonBody>()); }
 };
 
-class ToggleButtonMark : public Listener{
-public:
-    ToggleButtonMark(){set_body(std::make_shared<ToggleButtonMarkBase>());}
+class ToggleButtonMarkBody : public ListenerBody
+{
+  protected:
+    void Update(Subject *from) override;
 };
 
-
-class ToggleSliderBase : public ListenerBody{
-protected:
-    void Update(Subject* from) override;
-
+class ToggleButtonMark : public Listener
+{
+  public:
+    ToggleButtonMark() { set_body(std::make_shared<ToggleButtonMarkBody>()); }
 };
 
-class ToggleSlider : public Listener{
-public:
-    ToggleSlider(){set_body(std::make_shared<ToggleSliderBase>());}
-
+class ToggleSliderBody : public ListenerBody
+{
+  protected:
+    void Update(Subject *from) override;
 };
 
-} // namespace
+class ToggleSlider : public Listener
+{
+  public:
+    ToggleSlider() { set_body(std::make_shared<ToggleSliderBody>()); }
+};
+
+} // namespace m5_mytool
 #endif // TOGGLEPARTS_H_

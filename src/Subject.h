@@ -6,31 +6,28 @@
 
 #include "Listener.h"
 
-namespace m5_mytool {
+namespace m5_mytool
+{
 
-class Subject{
-private:
+class Subject
+{
+  private:
     std::vector<std::weak_ptr<ListenerBody>> bodies_;
 
-public:
+  public:
     /* register the Listener */
-    void Add(Listener& listener);
+    void Add(Listener &listener);
 
     /* deregister the Listener */
-    void Detete(Listener& listener);
+    void Detete(Listener &listener);
 
     /* sweep unreferenced Listeners */
     void Sweep();
 
-protected:
+  protected:
     /* call Listeners handler */
     void Notify();
-
 };
 
-
-
-
-
-} // namespace
+} // namespace m5_mytool
 #endif // SUBJECT_H_

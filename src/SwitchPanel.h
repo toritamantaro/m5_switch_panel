@@ -5,27 +5,28 @@
 
 #include "Subject.h"
 
-namespace m5_mytool{
+namespace m5_mytool
+{
 
 /**
  * SwitchPanel is Subject for ToggleSwitch(Listner)
-**/ 
-class SwitchPanel : public Subject{
-private:
+**/
+class SwitchPanel : public Subject
+{
+  private:
     float_t variation_value_;
 
-public:
+  public:
     SwitchPanel() = default;
     ~SwitchPanel() = default;
 
     void Init(void);
 
-    void NotifyListeners(){Notify();}
+    void NotifyListeners() { Notify(); }
 
-    float_t variation_value()const{return variation_value_;}
-    void set_variation_value(float_t f){variation_value_=f;}
-
+    float_t variation_value() const { return variation_value_; }
+    void set_variation_value(float_t f) { variation_value_ = f; }
 };
 
-} // namespace
+} // namespace m5_mytool
 #endif // SWITCHPANEL_H_

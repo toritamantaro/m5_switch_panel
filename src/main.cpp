@@ -6,9 +6,9 @@ m5_mytool::SwitchPanel sp;
 
 /* Listener(Observer) */
 #include "ToggleSwitch.h"
-m5_mytool::ToggleSwitch switch_a(10,20,200,10); // x, y, width, height
-m5_mytool::ToggleSwitch switch_b(10,65,150,30); // x, y, width, height
-m5_mytool::ToggleSwitch switch_c(10,130,200,90); // x, y, width, height
+m5_mytool::ToggleSwitch switch_a(10, 20, 200, 10);  // x, y, width, height
+m5_mytool::ToggleSwitch switch_b(10, 65, 150, 30);  // x, y, width, height
+m5_mytool::ToggleSwitch switch_c(10, 130, 200, 90); // x, y, width, height
 
 /* ColorPalette */
 // #include "ColorPalette.h"
@@ -19,7 +19,8 @@ const uint8_t buttonC_GPIO = 37;
 
 const uint8_t LedPin = 22; // LED test
 
-void setup() {
+void setup()
+{
   // Initialize the M5Stack object
   M5.begin();
 
@@ -40,10 +41,10 @@ void setup() {
   sp.Add(switch_c);
 
   sp.Init();
-
 }
 
-void loop() {
+void loop()
+{
   // digitalRead returns LOW when M5stack button pressed.
   bool A_is_high = !digitalRead(buttonA_GPIO);
   bool B_is_high = !digitalRead(buttonB_GPIO);
@@ -54,12 +55,14 @@ void loop() {
   bool state_B = switch_b.Check(B_is_high);
   bool state_C = switch_c.Check(C_is_high);
 
-  if(state_C){ // LED test
-    digitalWrite(LedPin,HIGH);
-  }else{
-    digitalWrite(LedPin,LOW);
+  if (state_C)
+  { // LED test
+    digitalWrite(LedPin, HIGH);
+  }
+  else
+  {
+    digitalWrite(LedPin, LOW);
   }
 
-  delay(10);
-
+  delay(1);
 }
