@@ -3,13 +3,15 @@
 namespace m5_mytool
 {
 
-TogglePainter::TogglePainter(int16_t top, int16_t left, int16_t width, int16_t height) : sprite_{std::unique_ptr<TFT_eSprite>(new TFT_eSprite(&M5.Lcd))}
+TogglePainter::TogglePainter(int16_t top, int16_t left, int16_t width, int16_t height) : 
+    sprite_{std::unique_ptr<TFT_eSprite>(new TFT_eSprite(&M5.Lcd))}
 {
     rect_.SetPosition(top, left);
     rect_.SetSize(width, height);
 }
 
-TogglePainter::TogglePainter(int16_t top, int16_t left, int16_t width, int16_t height, ColorPalette palette) : TogglePainter(top, left, width, height)
+TogglePainter::TogglePainter(int16_t top, int16_t left, int16_t width, int16_t height, ColorPalette palette) : 
+    TogglePainter(top, left, width, height)
 {
     palette_ = palette;
 }

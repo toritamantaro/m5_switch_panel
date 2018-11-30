@@ -8,10 +8,11 @@ BoundingRect::BoundingRect(uint16_t left, uint16_t top) : BoundingRect{left, top
     /* nothing */
 }
 
-BoundingRect::BoundingRect(uint16_t left, uint16_t top, uint16_t width, uint16_t height) : left_{left},
-                                                                                           top_{top},
-                                                                                           width_{width},
-                                                                                           height_{height}
+BoundingRect::BoundingRect(uint16_t left, uint16_t top, uint16_t width, uint16_t height) : 
+    left_{left},
+    top_{top},
+    width_{width},
+    height_{height}
 {
     /* nothing */
 }

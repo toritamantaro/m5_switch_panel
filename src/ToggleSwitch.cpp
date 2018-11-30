@@ -5,7 +5,8 @@
 namespace m5_mytool
 {
 
-ToggleSwitchBody::ToggleSwitchBody(int16_t top, int16_t left, int16_t width, int16_t height) : painter_{PainterMaker(top, left, width, height)}
+ToggleSwitchBody::ToggleSwitchBody(int16_t top, int16_t left, int16_t width, int16_t height) : 
+    painter_{PainterMaker(top, left, width, height)}
 {
     painter_->Add(slider_);
     painter_->Add(button_);

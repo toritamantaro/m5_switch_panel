@@ -3,7 +3,8 @@
 namespace m5_mytool
 {
 
-ButtonStateContext::ButtonStateContext() : state_{ToggleOff()} {}
+ButtonStateContext::ButtonStateContext() : 
+    state_{ToggleOff()} {}
 
 /**
  *  BUTTON Check(bool is_high)
