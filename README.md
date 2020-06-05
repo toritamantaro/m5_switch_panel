@@ -44,3 +44,5 @@ void loop()
 ```
 
 
+## Class Diagram
+![M5_panel_switch_uml_02](https://user-images.githubusercontent.com/37294949/83836482-8894aa80-a72e-11ea-9a8b-e3f8306125d8.png)
